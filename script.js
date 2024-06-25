@@ -1,4 +1,4 @@
-﻿const display = document.getElementById('display');
+const display = document.getElementById('display');
 const maxLength = 20;
 
 function updateDisplay() {
@@ -74,3 +74,21 @@ function setCaretPosition(element, position) {
         sel.addRange(range);
     }
 }
+
+// Ensure display is always focused to receive input
+display.addEventListener('focus', function() {
+    const sel = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(display);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+});
+
+// Prevent default behavior of Enter key in contenteditable div
+display.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        calculate();
+    }
+});
