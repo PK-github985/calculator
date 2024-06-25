@@ -1,4 +1,4 @@
-﻿body {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,6 +31,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     user-select: none; /* Prevent direct text selection */
+    outline: none; /* Remove focus outline */
 }
 
 .buttons {
